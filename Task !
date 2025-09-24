@@ -1,0 +1,266 @@
+Cybersecurity is about protecting digital systems and data.
+
+1. One simple model is the CIA Triad:
+
+🔹Confidentiality → Only the right people should see the data. Example: your bank balance should be private.
+🔹Integrity → Data should not be changed without permission. Example: a hacker should not change marks in a university database.
+🔹Availability → Systems should be up and working when needed. Example: ATMs must work 24/7.
+
+
+2. Common Threats
+
+🔹Phishing → fake emails/websites to steal your password.
+🔹Malware → viruses or trojans that harm your system.
+🔹Ransomware → locks your files and asks for money.
+🔹Brute-force attack → trying many passwords until one works.
+🔹SQL Injection → inserting malicious queries into a website’s database.
+🔹DDoS → flooding a website with traffic to make it crash.
+
+
+3.Attack Vectors (Ways Hackers Attack)
+🔹Social Engineering → Tricking people instead of systems.
+  Examples: phishing emails, fake IT calls, malicious USBs.
+🔹Wireless Attacks → Targeting Wi-Fi or Bluetooth.
+  Examples: cracking weak Wi-Fi passwords, fake hotspots, packet sniffing.
+🔹Insider Threats → Misuse of access by employees/contractors.
+  Examples: stealing data, weak password habits, or compromised accounts.
+
+
+4.🌐 Networking Basics
+
+    🔹OSI Model (Open Systems Interconnection)
+     .The OSI model explains how data travels from one computer to another in 7 layers. Think of it like a postal system — from writing a letter to delivering it.
+        1.Physical Layer → cables, Wi-Fi, signals. Example: Ethernet cable or Wi-Fi radio.
+        2.Data Link Layer → organizes data into frames, handles MAC addresses. Example: Switches, ARP.
+        3.Network Layer → routes data using IP addresses. Example: Routers, IPv4/IPv6.
+        4.Transport Layer → ensures reliable delivery with TCP/UDP. Example: TCP (guaranteed), UDP (faster, no guarantee).
+        5.Session Layer → manages communication sessions. Example: keeping you logged into a website.
+        6.Presentation Layer → formats and encrypts data. Example: SSL/TLS encryption.
+        7.Application Layer → what the user interacts with. Example: Browser (HTTP/HTTPS), Email (SMTP).
+
+  
+   🔹TCP/IP Model
+    .The TCP/IP model is a simpler, practical version of OSI with 4 layers. This is what the internet actually uses.
+      1.Application Layer → user apps like web (HTTP), email (SMTP).
+      2.Transport Layer → manages connections (TCP = reliable, UDP = fast).
+      3.Internet Layer → routes data using IP addresses.
+      4.Network Access Layer → physical sending of data (Ethernet, Wi-Fi).
+
+
+   🔹DNS (Domain Name System)
+
+        .DNS = Domain Name System → the phonebook of the internet.
+        .Humans use names like google.com.
+        .Computers need numbers (IP addresses, e.g., 142.250.182.14).
+        .DNS converts names → IPs.
+
+
+  🔹HTTP (HyperText Transfer Protocol)
+
+        .Standard protocol for web communication.
+        .Sends data in plain text → anyone can read it if intercepted.
+        .Example: Login credentials sent via HTTP can be stolen with packet sniffers.
+
+
+  🔹HTTPS (HyperText Transfer Protocol Secure)
+
+        .HTTP + SSL/TLS encryption.
+        .Encrypts communication → attackers can’t read your data.
+        .Uses certificates to prove website authenticity.
+        .Example: Banking, Gmail, Facebook all use HTTPS.
+
+
+  🔹IP Addressing
+
+      .An IP address is like a home address for devices in a network.
+        1.IPv4 → most common, looks like 192.168.1.1.
+        2.IPv6 → newer, longer, looks like 2001:0db8:85a3::8a2e:0370:7334.  
+
+      .Classes of IPv4:
+        a.Class A: 1.0.0.0 – 126.255.255.255 (large networks) 
+        b.Class B: 128.0.0.0 – 191.255.255.255 (medium) 
+        c.Class C: 192.0.0.0 – 223.255.255.255 (small networks, home Wi-Fi)
+
+      .Private IP Ranges (used inside LANs, not public internet)
+        a.Class A: 10.0.0.0 – 10.255.255.255
+        b.Class B: 172.16.0.0 – 172.31.255.255 
+        c.Class C: 192.168.0.0 – 192.168.255.255
+
+
+
+  🔹Subnetting
+
+      .Subnetting = dividing a large network into smaller parts.
+       It’s like dividing a big apartment building into smaller flats.
+
+          .Example:
+            .IP: 192.168.1.10
+            .Subnet Mask: 255.255.255.0 → /24
+
+          .Meaning:
+            .First 3 octets (192.168.1) = Network part.
+            .Last octet (.10) = Host part (device number).
+          .This /24 network can have 254 devices (1–254 usable addresses).
+
+
+
+  🔹 What is NAT?
+
+      .NAT = Network Address Translation.
+      .It’s used in routers to let many devices in a private network (like your home Wi-Fi) share one public IP address on the internet.
+      .IPv4 addresses are limited → NAT helps reuse private addresses.
+      .Provides a layer of security (outside world can’t directly see your private devices).
+
+      .Types of NAT
+
+        .Static NAT – One private IP ↔ One public IP (fixed mapping).
+        .Dynamic NAT – Private IP ↔ Public IP from a pool (changes).
+        .PAT (Port Address Translation) aka NAT Overload – Many private IPs share one public IP using different ports (most common in homes).
+
+      .In short:
+        .NAT = your router acting like a translator.
+        .It hides private IPs and lets multiple devices share the same public IP.
+
+
+
+5.Cryptography Basics
+
+  🔹Symmetric Encryption
+
+    What it is: Uses one key to both lock (encrypt) and unlock (decrypt) the data.
+    Example: Locking a diary with a single key; the same key opens it.
+    Pros: Fast and simple.
+    Cons: Both sender and receiver must share the key secretly, which can be risky.
+    Common examples: AES, DES, RC4
+
+  🔹Asymmetric Encryption
+
+    What it is: Uses two keys — a public key to encrypt and a private key to decrypt.
+    Example: You send a locked box to a friend; only your friend has the key to open it.
+    Pros: No need to share private keys; safer for communication.
+    Cons: Slower than symmetric encryption.
+    Common examples: RSA, ECC
+
+💡 Quick way to remember:
+     Symmetric = Same key
+     Asymmetric = Different keys
+
+
+    🔹What is Hashing?
+
+    Hashing = taking some data (like a password, file, or text) → running it through a math formula → getting a fixed-length code (called a hash).
+    Same input → always same hash.
+    Small change in input → totally different hash.
+    Hashes can’t be easily reversed back to the original data.
+
+    🔹 MD5
+
+      Old hashing algorithm.
+      Output: 32 characters (128 bits).
+      Example: hello → 5d41402abc4b2a76b9719d911017c592.
+      Problem: It’s broken (hackers can crack it). Not safe for passwords.
+
+    🔹 SHA-256
+      A newer and stronger hashing algorithm (part of the SHA-2 family).
+      Output: 64 characters (256 bits).
+      Example: hello → 2cf24dba5... (much longer).
+      Secure and widely used (Bitcoin, SSL, file integrity).
+
+    👉 In short:
+      MD5 = fast but weak (don’t use for security).
+      SHA-256 = slower but much stronger (safe for modern use).
+
+
+    🔹 What is a Digital Certificate?
+
+      .Think of it like an online ID card for websites.
+      .Issued by a trusted company called a Certificate Authority (CA).
+      .It proves:
+        1.The website is real (not fake).
+        2.It owns the correct encryption keys.
+
+    🔹 What is SSL/TLS?
+      
+      .SSL (Secure Sockets Layer) and TLS (Transport Layer Security) are security protocols.
+      .They make sure that when you visit a website, the data between your browser and the server is encrypted (safe from hackers).
+      .Example: When you see https:// with a 🔒 lock in the browser, it’s using SSL/TLS.
+
+
+    🔹 Encrypt & Decrypt with OpenSSL
+
+      .Encrypt a file:
+        openssl enc -aes-256-cbc -salt -in message.txt -out message.enc
+      .Decrypt a file:
+        openssl enc -d -aes-256-cbc -in message.enc -out message_decrypted.txt
+      .Encrypt text (Base64):
+        echo "SecretMessage123" | openssl enc -aes-256-cbc -a -salt -pass pass:mypassword
+      .Decrypt text (Base64):
+        echo "<encrypted_text_here>" | openssl enc -aes-256-cbc -a -d -pass pass:mypassword
+
+        -aes-256-cbc = algorithm
+        -d = decrypt
+        -a = base64 encoding
+        -pass pass: = password for quick testing
+
+
+ 🔹CHEAT-SHEET
+
+    1.File & Directory
+      pwd             # show current directory
+      ls              # list files
+      ls -l           # list with details
+      cd dir_name     # change directory
+      cd ..           # go back one level
+      mkdir new_dir   # make directory
+      rmdir old_dir   # remove empty directory
+
+
+    2.File Operations
+      touch file.txt       # create empty file
+      cp file1 file2       # copy file
+      mv file1 file2       # move/rename file
+      rm file.txt          # delete file
+      cat file.txt         # show file content
+      nano file.txt        # edit file (nano editor)
+
+
+    3.Permissions
+      ls -l                # check permissions
+      chmod 755 file.txt   # change permissions
+      chown user file.txt  # change owner
+
+
+    4.System Info
+      whoami          # current user
+      uname -a        # system info
+      df -h           # disk usage
+      free -h         # memory usage
+      top             # running processes
+
+
+    5.Package Management
+      sudo apt update          # update repo list
+      sudo apt upgrade         # upgrade packages
+      sudo apt install pkg     # install package
+      sudo apt remove pkg      # remove package
+
+
+    6.Networking
+      ifconfig / ip a    # show IP addresses
+      ping google.com    # test connectivity
+      curl example.com   # get webpage
+
+
+    7.Others
+      history       # show command history
+      clear         # clear terminal
+      man command   # help for command
+
+
+
+
+
+
+
+
+
